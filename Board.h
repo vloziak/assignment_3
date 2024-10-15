@@ -11,7 +11,6 @@ public:
     std::vector<std::vector<char> > grid;
     Board();
     void clearAll();
-    void resetId();
     void print() const;
     void clear();
     void drawShape(Shape* shape);
@@ -21,6 +20,9 @@ public:
     Shape* getShapeById(int id);
     Shape* getShapeByCoordinates(int x, int y);
     void removeLastSelected();
+    Shape* editSelectedShape(std::string param);
+    Shape* paintSelectedShape(std::string color);
+    Shape* move(int x, int y);
     void save(const std::string& filename);
     void load(const std::string& filename);
 };

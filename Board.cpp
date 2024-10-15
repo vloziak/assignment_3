@@ -41,14 +41,16 @@ void Board::undo() {
         shapes.pop_back();
         clear();
 
-        for (Shape* shape : shapes) {
-            Shape::nextId = shapes.back()->id + 1;
-            shape->draw(grid);
+        if (!shapes.empty()) {
+            Shape::nextId = shapes.back()->getId() + 1;
+        } else {
+            Shape::nextId = 1;
         }
 
-
-    }
-    else {
+        for (Shape* shape : shapes) {
+            shape->draw(grid);
+        }
+    } else {
         std::cout << "No shapes to undo.\n";
     }
 }
@@ -174,12 +176,14 @@ void Board::removeLastSelected() {
         lastSelectedShapes.clear();
 
         clear();
-        for (Shape* shape : shapes) {
-            Shape::nextId = shapes.back()->getId();
-            shape->draw(grid);
+        if (!shapes.empty()) {
+            Shape::nextId = shapes.back()->getId() + 1;
+        } else {
+            Shape::nextId = 1;
         }
 
-    } else {
-        std::cout << "No shapes to undo.\n";
+        for (Shape* shape : shapes) {
+            shape->draw(grid);
+        }
     }
 }
