@@ -21,7 +21,7 @@ public:
     Shape* getShapeByCoordinates(int x, int y);
     void removeLastSelected();
     Shape* editSelectedShape(std::string param);
-    Shape* paintSelectedShape(std::string color);
+    void paintSelectedShape(const std::string& color);
     Shape* move(int x, int y);
     void save(const std::string& filename);
     void load(const std::string& filename);

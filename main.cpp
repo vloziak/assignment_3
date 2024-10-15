@@ -91,8 +91,11 @@ int main() {
                 }
         } else if (cmd == "remove") {
             board.removeLastSelected();
-            std::cout << "Hooray " << std::endl;
-        } else if (cmd == "exit") {
+        } else if (cmd == "paint") {
+            std::string color;
+            iss >> color;
+            board.paintSelectedShape(color);
+        }else if (cmd == "exit") {
             break;
         } else {
             std::cout << "Unknown command.\n";

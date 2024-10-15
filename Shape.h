@@ -16,6 +16,9 @@ public:
     virtual std::string getInfoForConsole() const = 0;
     virtual std::string getInfoForFile() const = 0;
     virtual bool containsPoint (int x, int y) const = 0;
+    void setColor(const std::string& newColor) {
+        color = newColor;
+    }
     int getId() const { return id; }
     void setId(int newId) { id = newId; }
 

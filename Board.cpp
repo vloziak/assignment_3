@@ -187,3 +187,19 @@ void Board::removeLastSelected() {
         }
     }
 }
+
+void Board::paintSelectedShape(const std::string& color) {
+    if (!lastSelectedShapes.empty()) {
+        for (Shape* shape : lastSelectedShapes) {
+            shape->setColor(color);
+            std::cout << "< ID: " << shape->getId() << ", Type: "
+                      << shape->getInfoForConsole() << " painted " << color << "." << std::endl;
+        }
+        clear();
+        for (Shape* shape : shapes) {
+            shape->draw(grid);
+        }
+    } else {
+        std::cout << "< No shape selected to paint." << std::endl;
+    }
+}
