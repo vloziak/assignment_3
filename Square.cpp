@@ -1,9 +1,8 @@
 #include "Square.h"
-
-#include <iostream>
 #include <ostream>
 
-Square::Square(int x, int y, int width, int height): x(x), y(y), width(width), height(height) {
+Square::Square(int x, int y, int width, int height, std::string color):
+x(x), y(y), width(width), height(height), color(color) {
 }
 void Square::draw(std::vector<std::vector<char> >& grid) const {
     if (width <= 0 || height <= 0) return;
@@ -11,11 +10,11 @@ void Square::draw(std::vector<std::vector<char> >& grid) const {
     for (int j = 0; j < width; ++j) {
         if (y >= 0 && y < grid.size()) {
             if (x + j >= 0 && x + j < grid[0].size()) {
-                grid[y][x + j] = '*';
+                grid[y][x + j] = color[0];
             }
             if (y + height - 1 < grid.size()) {
                 if (x + j >= 0 && x + j < grid[0].size()) {
-                    grid[y + height - 1][x + j] = '*';
+                    grid[y + height - 1][x + j] = color[0];
                 }
             }
         }
@@ -24,10 +23,10 @@ void Square::draw(std::vector<std::vector<char> >& grid) const {
     for (int i = 1; i < height - 1; ++i) {
         if (y + i >= 0 && y + i < grid.size()) {
             if (x >= 0 && x < grid[0].size()) {
-                grid[y + i][x] = '*';
+                grid[y + i][x] = color[0];
             }
             if (x + width - 1 >= 0 && x + width - 1 < grid[0].size()) {
-                grid[y + i][x + width - 1] = '*';
+                grid[y + i][x + width - 1] = color[0];
             }
         }
     }
@@ -42,7 +41,7 @@ void Square::fill(std::vector<std::vector<char>>& grid) const {
             int gridY = y + i;
 
             if (gridY >= 0 && gridY < grid.size() && gridX >= 0 && gridX < grid[0].size()) {
-                grid[gridY][gridX] = '*';
+                grid[gridY][gridX] = color[0];
             }
         }
     }

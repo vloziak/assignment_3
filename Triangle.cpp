@@ -1,6 +1,7 @@
 #include "Triangle.h"
 
-Triangle::Triangle(int x, int y, int height) : x(x), y(y), height(height) {}
+Triangle::Triangle(int x, int y, int height, std::string color) :
+x(x), y(y), height(height), color(color) {}
 
 
 void Triangle::draw(std::vector<std::vector<char> >& grid) const {
@@ -12,16 +13,16 @@ void Triangle::draw(std::vector<std::vector<char> >& grid) const {
         int posY = y + i;
         if (posY < grid.size()) {
             if (leftMost >= 0 && leftMost < grid[0].size())
-                grid[posY][leftMost] = '*';
+                grid[posY][leftMost] = color[0];
             if (rightMost >= 0 && rightMost < grid[0].size() && leftMost != rightMost)
-                grid[posY][rightMost] = '*';
+                grid[posY][rightMost] = color[0];
         }
     }
     for (int j = 0; j < 2 * height - 1; ++j) {
         int baseX = x - height + 1 + j;
         int baseY = y + height - 1;
         if (baseX >= 0 && baseX < grid[0].size() && baseY < grid.size())
-            grid[baseY][baseX] = '*';
+            grid[baseY][baseX] = color[0];
     }
 }
 
@@ -37,7 +38,7 @@ void Triangle::fill(std::vector<std::vector<char>>& grid) const {
         if (posY >= 0 && posY < grid.size()) {
             for (int posX = leftMost; posX <= rightMost; ++posX) {
                 if (posX >= 0 && posX < grid[0].size()) {
-                    grid[posY][posX] = '*';
+                    grid[posY][posX] = color[0];
                 }
             }
         }

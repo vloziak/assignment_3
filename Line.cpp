@@ -2,7 +2,8 @@
 #include <cmath>
 #include <iostream>
 #include <ostream>
-Line::Line(int startX, int startY, int length, int angle) : startX(startX), startY(startY), length(length), angle(angle) {}
+Line::Line(int startX, int startY, int length, int angle, std::string color) :
+startX(startX), startY(startY), length(length), angle(angle), color(color) {}
 
 void Line::draw(std::vector<std::vector<char> >& grid) const {
     double radians = angle * M_PI / 180.0;
@@ -12,7 +13,7 @@ void Line::draw(std::vector<std::vector<char> >& grid) const {
         int posY = static_cast<int>(startY + i * sin(radians));
 
         if (posX >= 0 && posX < grid[0].size() && posY >= 0 && posY < grid.size()) {
-            grid[posY][posX] = '*';
+            grid[posY][posX] = color[0];
         }
     }
 }
@@ -25,7 +26,7 @@ void Line::fill(std::vector<std::vector<char>>& grid) const {
         int posY = static_cast<int>(startY + i * sin(radians));
 
         if (posX >= 0 && posX < grid[0].size() && posY >= 0 && posY < grid.size()) {
-            grid[posY][posX] = '*';
+            grid[posY][posX] = color[0];
         }
     }
 }

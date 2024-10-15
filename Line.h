@@ -5,9 +5,10 @@
 
 class Line : public Shape {
     int startX, startY, length, angle;
+    std::string color;
 
 public:
-    Line(int startX, int startY, int length, int angle);
+    Line(int startX, int startY, int length, int angle, std::string color);
     void draw(std::vector<std::vector<char> >& grid) const override;
     void fill(std::vector<std::vector<char>>& grid) const override;
     std::string getInfoForConsole() const override;

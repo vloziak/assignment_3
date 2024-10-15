@@ -2,7 +2,7 @@
 #include <iostream>
 #include <math.h>
 
-Circle::Circle(int centerX, int centerY, int radius) : centerX(centerX), centerY(centerY), radius(radius) {}
+Circle::Circle(int centerX, int centerY, int radius, std::string color) : centerX(centerX), centerY(centerY), radius(radius), color(color) {}
 
 
 void Circle::draw(std::vector<std::vector<char> >& grid) const {
@@ -15,7 +15,7 @@ void Circle::draw(std::vector<std::vector<char> >& grid) const {
                 int gridY = centerY - radius + y;
 
                 if (gridX >= 0 && gridX < grid[0].size() && gridY >= 0 && gridY < grid.size()) {
-                    grid[gridY][gridX] = '*';
+                    grid[gridY][gridX] = color[0];
                 }
             }
         }
@@ -32,7 +32,7 @@ void Circle::fill(std::vector<std::vector<char>>& grid) const {
                 int gridY = centerY - radius + y;
 
                 if (gridX >= 0 && gridX < grid[0].size() && gridY >= 0 && gridY < grid.size()) {
-                    grid[gridY][gridX] = '*'; // Fill the grid position
+                    grid[gridY][gridX] = color[0];
                 }
             }
         }

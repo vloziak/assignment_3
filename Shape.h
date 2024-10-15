@@ -8,7 +8,8 @@ class Shape {
 public:
     int id;
     static int nextId;
-    Shape() : id(nextId++) {}
+    std::string color;
+    Shape() : id(nextId++), color(" ") {}
 
     virtual void draw(std::vector<std::vector<char> >& grid) const = 0;
     virtual void fill(std::vector<std::vector<char> >& grid) const = 0;

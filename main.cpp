@@ -21,28 +21,28 @@ int main() {
         iss >> cmd;
 
         if (cmd == "draw") {
-            std::string shapeType, drawType;
-            iss >> drawType >> shapeType;
+            std::string shapeType, drawType, color;
+            iss >> drawType >> color >> shapeType;
 
             Shape* shape;
 
             if (shapeType == "triangle") {
                 int x, y, height;
                 iss >> x >> y >> height;
-                shape = new Triangle(x, y, height);
+                shape = new Triangle(x, y, height, color);
             } else if (shapeType == "square") {
                 int x, y, width, height;
                 iss >> x >> y >> width >> height;
-                shape = new Square(x, y, width, height);
+                shape = new Square(x, y, width, height, color);
             } else if (shapeType == "circle") {
                 int x, y, radius;
                 iss >> x >> y >> radius;
-                shape = new Circle(x, y, radius);
+                shape = new Circle(x, y, radius, color);
             } else if (shapeType == "line") {
                 int x, y, length;
                 double angle;
                 iss >> x >> y >> length >> angle;
-                shape = new Line(x, y, length, angle);
+                shape = new Line(x, y, length, angle, color);
             } else {
                 std::cout << "Unknown shape. Use triangle, square, circle, or line.\n";
                 continue;

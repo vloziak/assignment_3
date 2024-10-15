@@ -5,9 +5,10 @@
 
 class Square : public Shape {
     int x, y, width, height;
+    std::string color;
 
 public:
-    Square(int x, int y, int width, int height);
+    Square(int x, int y, int width, int height, std::string color);
     void draw(std::vector<std::vector<char> >& grid) const override;
     void fill(std::vector<std::vector<char> >& grid) const override;
     std::string getInfoForFile() const override;
