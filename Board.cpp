@@ -35,11 +35,6 @@ void Board::drawShape(Shape* shape) {
     shape->draw(grid);
 }
 
-void Board::fillShape(Shape* shape) {
-    shapes.push_back(shape);
-    shape->fill(grid);
-}
-
 void Board::undo() {
     if (!shapes.empty()) {
         delete shapes.back();
@@ -92,7 +87,7 @@ void Board::save(const std::string& filename) {
     std::cout << "Blackboard is saved to the file." << std::endl;
 }
 
-/*void Board::load(const std::string& filename) {
+void Board::load(const std::string& filename) {
     std::ifstream file(filename);
     if (!file) {
         std::cout << "Failed to open the file: " << filename << std::endl;
@@ -105,28 +100,28 @@ void Board::save(const std::string& filename) {
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         int id, x, y, length, width, height, radius, angle;
-        std::string type;
+        std::string type, color, drawType;
 
-        if (iss >> id >> type) {
+        if (iss >> id >> type >> drawType >> color) {
             if (type == "Line") {
                 if (iss >> x >> y >> length >> angle) {
-                    Shape* newLine = new Line(x, y, length, angle);
-                    addShape(newLine);
+                    Shape* newLine = new Line(x, y, length, angle, color, drawType);
+                    drawShape(newLine);
                 }
             } else if (type == "Circle") {
                 if (iss >> x >> y >> radius) {
-                    Shape* newCircle = new Circle(x, y, radius);
-                    addShape(newCircle);
+                    Shape* newCircle = new Circle(x, y, radius, color, drawType);
+                    drawShape(newCircle);
                 }
             } else if (type == "Square") {
                 if (iss >> x >> y >> width >> height) {
-                    Shape* newSquare = new Square(x, y, width, height);
-                    addShape(newSquare);
+                    Shape* newSquare = new Square(x, y, width, height, color, drawType);
+                    drawShape(newSquare);
                 }
             } else if (type == "Triangle") {
                 if (iss >> x >> y >> height) {
-                    Shape* newTriangle = new Triangle(x, y, height);
-                    addShape(newTriangle);
+                    Shape* newTriangle = new Triangle(x, y, height, color, drawType);
+                    drawShape(newTriangle);
                 }
             } else {
                 std::cout << "Unknown shape type: " << type << std::endl;
@@ -137,4 +132,4 @@ void Board::save(const std::string& filename) {
     }
 
     std::cout << "Blackboard loaded from the file." << std::endl;
-}*/
+}

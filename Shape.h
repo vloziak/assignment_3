@@ -9,10 +9,10 @@ public:
     int id;
     static int nextId;
     std::string color;
-    Shape() : id(nextId++), color(" ") {}
+    std::string drawType;
+    Shape() : id(nextId++), color(""), drawType("") {}
 
     virtual void draw(std::vector<std::vector<char> >& grid) const = 0;
-    virtual void fill(std::vector<std::vector<char> >& grid) const = 0;
     virtual std::string getInfoForConsole() const = 0;
     virtual std::string getInfoForFile() const = 0;
     int getId() const { return id; }

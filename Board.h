@@ -14,7 +14,6 @@ public:
     void print() const;
     void clear();
     void drawShape(Shape* shape);
-    void fillShape(Shape* shape);
     void undo();
     void displayShapes() const;
     void listShapes();

@@ -5,12 +5,11 @@
 
 class Line : public Shape {
     int startX, startY, length, angle;
-    std::string color;
+    std::string color, drawType;
 
 public:
-    Line(int startX, int startY, int length, int angle, std::string color);
+    Line(int startX, int startY, int length, int angle, std::string color, std::string drawType);
     void draw(std::vector<std::vector<char> >& grid) const override;
-    void fill(std::vector<std::vector<char>>& grid) const override;
     std::string getInfoForConsole() const override;
     std::string getInfoForFile() const override;
 };
