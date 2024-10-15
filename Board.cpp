@@ -30,9 +30,14 @@ void Board::clear() {
     grid.assign(30, std::vector<char>(100, ' '));
 }
 
-void Board::addShape(Shape* shape) {
+void Board::drawShape(Shape* shape) {
     shapes.push_back(shape);
     shape->draw(grid);
+}
+
+void Board::fillShape(Shape* shape) {
+    shapes.push_back(shape);
+    shape->fill(grid);
 }
 
 void Board::undo() {
@@ -87,7 +92,7 @@ void Board::save(const std::string& filename) {
     std::cout << "Blackboard is saved to the file." << std::endl;
 }
 
-void Board::load(const std::string& filename) {
+/*void Board::load(const std::string& filename) {
     std::ifstream file(filename);
     if (!file) {
         std::cout << "Failed to open the file: " << filename << std::endl;
@@ -132,4 +137,4 @@ void Board::load(const std::string& filename) {
     }
 
     std::cout << "Blackboard loaded from the file." << std::endl;
-}
+}*/

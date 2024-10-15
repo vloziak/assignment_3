@@ -2,6 +2,7 @@
 #define TRIANGLE_H
 
 #include "Shape.h"
+#include "iostream"
 
 class Triangle : public Shape {
     int x, y, height;
@@ -11,6 +12,7 @@ public:
     std::string getInfoForConsole() const override;
     std::string getInfoForFile() const override;
     void draw(std::vector<std::vector<char> >& grid) const override;
+    void fill(std::vector<std::vector<char> >& grid) const override;
 };
 
 #endif // TRIANGLE_H

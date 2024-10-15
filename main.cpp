@@ -21,8 +21,8 @@ int main() {
         iss >> cmd;
 
         if (cmd == "draw") {
-            std::string shapeType;
-            iss >> shapeType;
+            std::string shapeType, drawType;
+            iss >> drawType >> shapeType;
 
             Shape* shape;
 
@@ -48,7 +48,15 @@ int main() {
                 continue;
             }
 
-            board.addShape(shape);
+            if (drawType == "fill") {
+                board.fillShape(shape);
+            } else if (drawType == "frame") {
+                board.drawShape(shape);
+            } else {
+                std::cout << "Unknown draw type. Use fill or frame.\n";
+                delete shape;
+            }
+
         } else if (cmd == "print") {
             board.print();
         } else if (cmd == "clear") {
@@ -65,11 +73,11 @@ int main() {
             std::string fileName;
             iss >> fileName;
             board.save(fileName);
-        } else if (cmd == "load") {
+        } /*else if (cmd == "load") {
             std::string fileName;
             iss >> fileName;
             board.load(fileName);
-        } else if (cmd == "exit") {
+        }*/ else if (cmd == "exit") {
             break;
         } else {
             std::cout << "Unknown command.\n";

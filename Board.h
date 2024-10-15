@@ -4,16 +4,17 @@
 #include "Shape.h"
 
 class Board {
-    std::vector<std::vector<char> > grid;
     std::vector<Shape*> shapes;
 
 public:
+    std::vector<std::vector<char> > grid;
     Board();
     void clearAll();
     void resetId();
     void print() const;
     void clear();
-    void addShape(Shape* shape);
+    void drawShape(Shape* shape);
+    void fillShape(Shape* shape);
     void undo();
     void displayShapes() const;
     void listShapes();

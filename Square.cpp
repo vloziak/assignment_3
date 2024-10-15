@@ -1,5 +1,8 @@
 #include "Square.h"
 
+#include <iostream>
+#include <ostream>
+
 Square::Square(int x, int y, int width, int height): x(x), y(y), width(width), height(height) {
 }
 void Square::draw(std::vector<std::vector<char> >& grid) const {
@@ -25,6 +28,21 @@ void Square::draw(std::vector<std::vector<char> >& grid) const {
             }
             if (x + width - 1 >= 0 && x + width - 1 < grid[0].size()) {
                 grid[y + i][x + width - 1] = '*';
+            }
+        }
+    }
+}
+
+void Square::fill(std::vector<std::vector<char>>& grid) const {
+    if (width <= 0 || height <= 0) return;
+
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            int gridX = x + j;
+            int gridY = y + i;
+
+            if (gridY >= 0 && gridY < grid.size() && gridX >= 0 && gridX < grid[0].size()) {
+                grid[gridY][gridX] = '*';
             }
         }
     }
