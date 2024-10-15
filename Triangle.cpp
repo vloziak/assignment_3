@@ -43,6 +43,25 @@ void Triangle::draw(std::vector<std::vector<char> >& grid) const {
     }
 }
 
+bool Triangle::containsPoint(int pointX, int pointY) const {
+    int leftX = x - height;
+    int rightX = x + height;
+    int bottomY = y + height;
+    if (pointX < leftX || pointX > rightX || pointY < y || pointY > bottomY) {
+        return false;
+    }
+
+    double area = 0.5 * height * height;
+    double area1 = 0.5 * std::abs((x * (y + height) + pointX * (y - height) + (pointX + height) * y) -
+                                   (pointX * (y + height) + (pointX + height) * (y - height) + x * y));
+    double area2 = 0.5 * std::abs((x * pointY + pointX * (y + height) + (x + height) * y) -
+                                   (pointX * pointY + (x + height) * (y + height) + x * y));
+    double area3 = 0.5 * std::abs((pointX * pointY + x * (y + height) + (x + height) * y) -
+                                   (x * pointY + (x + height) * (y + height) + pointX * y));
+
+    return std::abs((area1 + area2 + area3) - area) < 0.01;
+}
+
 std::string Triangle::getInfoForConsole() const {
     return "ID: " + std::to_string(getId()) +
            ", Type: Triangle" +

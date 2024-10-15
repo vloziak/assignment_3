@@ -133,3 +133,22 @@ void Board::load(const std::string& filename) {
 
     std::cout << "Blackboard loaded from the file." << std::endl;
 }
+
+
+Shape* Board::getShapeById(int id) {
+    for (Shape* shape : shapes) {
+        if (shape->getId() == id) {
+            return shape;
+        }
+    }
+    return nullptr;
+}
+
+Shape* Board::getShapeByCoordinates(int x, int y) {
+    for (Shape* shape : shapes) {
+        if (shape->containsPoint(x, y)) {
+            return shape;
+        }
+    }
+    return nullptr;
+}

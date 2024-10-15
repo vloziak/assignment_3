@@ -69,6 +69,26 @@ int main() {
             std::string fileName;
             iss >> fileName;
             board.load(fileName);
+        } else if (cmd == "selectC") {
+            int x, y;
+            if (iss >> x >> y) {
+                Shape* selectedShape = board.getShapeByCoordinates(x, y);
+                if (selectedShape) {
+                    std::cout << "< " << selectedShape->getInfoForConsole() << std::endl;
+                } else {
+                    std::cout << "< Shape was not found at (" << x << ", " << y << ")." << std::endl;
+                }
+            }
+        } else if (cmd == "selectId") {
+                int id;
+                if (iss >> id) {
+                    Shape* selectedShape = board.getShapeById(id);
+                    if (selectedShape) {
+                        std::cout << "< " << selectedShape->getInfoForConsole() << std::endl;
+                    } else {
+                        std::cout << "< Shape with ID " << id << " was not found." << std::endl;
+                    }
+                }
         } else if (cmd == "exit") {
             break;
         } else {

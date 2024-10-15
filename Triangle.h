@@ -12,6 +12,7 @@ public:
     std::string getInfoForConsole() const override;
     std::string getInfoForFile() const override;
     void draw(std::vector<std::vector<char> >& grid) const override;
+    bool containsPoint(int x, int y) const override;
 };
 
 #endif // TRIANGLE_H

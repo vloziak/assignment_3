@@ -40,6 +40,12 @@ void Circle::draw(std::vector<std::vector<char> >& grid) const {
     }
 }
 
+bool Circle::containsPoint(int x, int y) const {
+    int dx = x - centerX;
+    int dy = y - centerY;
+    return (dx * dx + dy * dy <= radius * radius);
+}
+
 std::string Circle::getInfoForConsole() const {
     return "ID: " + std::to_string(getId()) +
            ", Type: Circle" +

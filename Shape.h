@@ -15,6 +15,7 @@ public:
     virtual void draw(std::vector<std::vector<char> >& grid) const = 0;
     virtual std::string getInfoForConsole() const = 0;
     virtual std::string getInfoForFile() const = 0;
+    virtual bool containsPoint (int x, int y) const = 0;
     int getId() const { return id; }
     void setId(int newId) { id = newId; }
 

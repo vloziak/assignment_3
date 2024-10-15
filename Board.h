@@ -17,6 +17,8 @@ public:
     void undo();
     void displayShapes() const;
     void listShapes();
+    Shape* getShapeById(int id);
+    Shape* getShapeByCoordinates(int x, int y);
     void save(const std::string& filename);
     void load(const std::string& filename);
 };

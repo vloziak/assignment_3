@@ -17,6 +17,26 @@ void Line::draw(std::vector<std::vector<char> >& grid) const {
         }
     }
 }
+
+bool Line::containsPoint(int pointX, int pointY) const {
+    double radians = angle * M_PI / 180.0;
+    int endX = static_cast<int>(startX + length * cos(radians));
+    int endY = static_cast<int>(startY + length * sin(radians));
+
+    if ((pointX < std::min(startX, endX) || pointX > std::max(startX, endX)) ||
+        (pointY < std::min(startY, endY) || pointY > std::max(startY, endY))) {
+        return false;
+        }
+
+    double numerator = std::abs((endY - startY) * pointX - (endX - startX) * pointY + endX * startY - endY * startX);
+    double denominator = std::sqrt(std::pow(endY - startY, 2) + std::pow(endX - startX, 2));
+    double distance = numerator / denominator;
+
+    const double threshold = 0.5;
+
+    return distance <= threshold;
+}
+
 std::string Line::getInfoForConsole() const {
     return "ID: " + std::to_string(getId()) +
            ", Type: Line" +

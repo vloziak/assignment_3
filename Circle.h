@@ -10,5 +10,6 @@ public:
     void draw(std::vector<std::vector<char> >& grid) const override;
     std::string getInfoForConsole() const override;
     std::string getInfoForFile() const override;
+    bool containsPoint(int x, int y) const override;
 };
 #endif // CIRCLE_H

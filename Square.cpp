@@ -48,6 +48,11 @@ void Square::draw(std::vector<std::vector<char> >& grid) const {
 
 }
 
+bool Square::containsPoint(int pointX, int pointY) const {
+    return (pointX >= x && pointX <= (x + width) &&
+            pointY >= y && pointY <= (y + height));
+}
+
 std::string Square::getInfoForConsole() const {
     return "ID: " + std::to_string(getId()) +
            ", Type: Square" +
