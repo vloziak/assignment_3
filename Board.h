@@ -5,6 +5,7 @@
 
 class Board {
     std::vector<Shape*> shapes;
+    std::vector<Shape*> lastSelectedShapes;
 
 public:
     std::vector<std::vector<char> > grid;
@@ -19,6 +20,7 @@ public:
     void listShapes();
     Shape* getShapeById(int id);
     Shape* getShapeByCoordinates(int x, int y);
+    void removeLastSelected();
     void save(const std::string& filename);
     void load(const std::string& filename);
 };

@@ -138,6 +138,7 @@ void Board::load(const std::string& filename) {
 Shape* Board::getShapeById(int id) {
     for (Shape* shape : shapes) {
         if (shape->getId() == id) {
+            lastSelectedShapes.push_back(shape);
             return shape;
         }
     }
@@ -147,8 +148,38 @@ Shape* Board::getShapeById(int id) {
 Shape* Board::getShapeByCoordinates(int x, int y) {
     for (Shape* shape : shapes) {
         if (shape->containsPoint(x, y)) {
+            lastSelectedShapes.push_back(shape);
             return shape;
         }
     }
     return nullptr;
+}
+void Board::removeLastSelected() {
+    if (!lastSelectedShapes.empty()) {
+        for (Shape* shape : lastSelectedShapes) {
+            std::cout << "< ID: " << shape->getId()
+                      << ", Type: " << shape->getInfoForConsole() << " removed." << std::endl;
+
+            for (auto it = shapes.begin(); it != shapes.end();) {
+                if (*it == shape) {
+                    delete *it;
+                    it = shapes.erase(it);
+                    break;
+                } else {
+                    ++it;
+                }
+            }
+        }
+
+        lastSelectedShapes.clear();
+
+        clear();
+        for (Shape* shape : shapes) {
+            Shape::nextId = shapes.back()->getId();
+            shape->draw(grid);
+        }
+
+    } else {
+        std::cout << "No shapes to undo.\n";
+    }
 }

@@ -89,6 +89,9 @@ int main() {
                         std::cout << "< Shape with ID " << id << " was not found." << std::endl;
                     }
                 }
+        } else if (cmd == "remove") {
+            board.removeLastSelected();
+            std::cout << "Hooray " << std::endl;
         } else if (cmd == "exit") {
             break;
         } else {
